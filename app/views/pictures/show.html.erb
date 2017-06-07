@@ -1,0 +1,107 @@
+<div class="top-container">
+
+</div>
+
+<div class="container img-container">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <%= image_tag @picture.url, :class => "show-img" %>
+  </p>
+
+  <div class="img-description">
+    <p class="img-title">
+      <!-- <strong>Title:</strong> -->
+      <%= @picture.title %>
+    </p>
+
+    <p class="img-description-text">
+      <strong><%= @picture.description %></strong>
+
+    </p>
+
+    <p class="img-description-text">
+      <strong>Click here for code:</strong>
+      <a target="_blank" href="<%= @picture.github %>"><%= @picture.github %></a>
+    </p>
+
+    <!-- Add icon library -->
+
+    <span class="social">
+        <!-- Add font awesome icons -->
+        <a href="https://www.facebook.com" class="fa fa-facebook fa-2x"></a>
+        <a href="https://www.twitter.com" class="fa fa-twitter fa-2x"></a>
+        <a href="https://www.github.com." class="fa fa-github-alt fa-2x"></a>
+        <a href="https://www.linkedin.com." class="fa fa-linkedin-square fa-2x"></a>
+        <a href="https://www.plus.google.com." class="fa fa-google-plus fa-2x"></a>
+        <a href="https://www.instagram.com." class="fa fa-instagram fa-2x"></a>
+        <a href="https://www.snapchat.com." class="fa fa-snapchat-ghost fa-2x"></a>
+        <a href="https://www.reddit.com." class="fa fa-reddit-alien fa-2x"></a>
+    </span>
+  </div>
+
+
+
+
+  <!-- <p>
+    <strong>Likes:</strong>
+    <%= @picture.likes %>
+  </p> -->
+
+
+  <div class="img-description" id="comment-form">
+    <h2 class="img-title">Add a &lt;!-- comment --&gt;</h2>
+      <%= form_for([@picture, @picture.comments.build]) do |f| %>
+
+        <div class="form-group" id="comments">
+          <%= f.label :commenter, value="<h1>your name here</h1>"%>
+          <%= f.text_field :commenter %>
+
+
+          <%= f.label :body, value="<!--comment here-->" %>
+          <%= f.text_area :body %><br>
+
+          <%= f.submit %>
+
+        </div>
+
+
+
+
+
+    <% end %>
+  </div>
+
+  <div class="img-description">
+
+
+    <h2 class="img-title">Comments</h2>
+    <% @picture.comments.each do |comment| %>
+
+      <div class="inner-comments">
+        <p>
+          <strong>&lt;h1&gt;<%= comment.commenter %>&lt;/h1&gt;</strong>
+
+        </p>
+
+        <p>
+          <strong>&lt;!-- <%= comment.body %> --&gt;</strong>
+
+        </p>
+
+
+
+      </div>
+      <% end %>
+
+      <%= link_to 'Edit', edit_picture_path(@picture) %> 
+      <% link_to 'Back', pictures_path %>
+
+  </div>
+
+
+
+
+
+
+</div>

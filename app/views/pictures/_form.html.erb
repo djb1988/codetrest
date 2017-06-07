@@ -1,0 +1,44 @@
+<%= form_with(model: picture, local: true) do |form| %>
+  <% if picture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(picture.errors.count, "error") %> prohibited this picture from being saved:</h2>
+
+      <ul>
+      <% picture.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group new-form">
+    <label for="picture_title" class="label" >Post title:</label>
+    <%= form.text_field :title, :class => "form-control", :placeholder => "post title", :id => "picture_title" %>
+  </div>
+
+  <div class="form-group new-form">
+    <label for="picture_url" class="label" >Picture url:</label>
+      <%= form.text_field :url, :class => "form-control", :placeholder => "picture url", :id => "picture_url" %>
+  </div>
+
+  <div class="form-group  new-form">
+    <label for="github_url" class="label" >Github repo URL:</label>
+    <%= form.text_field :github, :class => "form-control", :placeholder => "github url", :id => "github_url" %>
+  </div>
+
+  <div class="form-group new-form">
+    <label for="description_box" class="label" >Description:</label>
+    <%= form.text_area :description, :class => "form-control", :placeholder => "description", :id => "description_box" %>
+  </div>
+
+
+  <!-- Removed this until we added likes feature -->
+  <!-- <div class="form-group">
+    <%= form.label :likes %>
+    <%= form.number_field :likes, id: :picture_likes %>
+  </div> -->
+
+  <div class="form-group">
+    <%= form.submit "Submit",   :class => "btn btn-default"%>
+  </div>
+<% end %>
